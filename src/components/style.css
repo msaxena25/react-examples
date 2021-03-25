@@ -1,0 +1,7 @@
+
+/* FormikForm.jsx */
+
+Label:first-child::after {
+  content: "*";
+  color: red;
+}

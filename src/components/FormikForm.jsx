@@ -1,0 +1,303 @@
+import React, { useState } from "react";
+import { Formik } from "formik";
+import {
+  Row,
+  Col,
+  Container,
+  Label,
+  FormGroup,
+  Form,
+  Input,
+  Alert,
+} from "reactstrap";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
+import "./style.css";
+import EmailOptions from "./EmailOptions";
+
+const FormikFormComponent = (props) => {
+  const [prospectId, setProspectId] = useState("");
+  const [isRequired, setIsRequired] = useState(false);
+  const values = {
+    firstName: "",
+    lastName: "",
+    emailAddress: "jane.doe@a.com",
+    orgName: "ABC Company",
+    orgParentName: "ABC Parent Company",
+    phoneNumber: "123456789",
+    addressStreet: "123 ABC St",
+    addressCity: "Dallas",
+    addressState: "TX",
+    addressZip: "75012",
+    dbcName: "Jane Doe1",
+    createdBy: "Jane",
+    updatedBy: "Jane",
+    salutation: "Mr",
+    middleName: "",
+    suffix: "Jr",
+    marketManager: "MM1",
+    businessType: "DODO",
+  };
+  const validate = (values) => {
+    const errors = {};
+    return errors;
+  };
+  const handleSubmit = (values, { setSubmitting }) => {
+    const valuesarr = Object.values(values);
+    setProspectId(35345345345);
+    props.parentCallback({ prospectId: 35345345345 }); // send Id to parent component
+    if (valuesarr.includes("")) {
+      setIsRequired(true);
+    } else {
+      setIsRequired(false);
+
+      setProspectId(35345345345);
+      // call post api
+      setTimeout(() => {
+        alert(JSON.stringify(values, null, 2));
+        setSubmitting(false);
+      }, 400);
+    }
+  };
+
+  const styles = {
+    fontWeight300: {
+      fontWeight: 300,
+      fontSize: "13px",
+      position: "absolute",
+      top: "35px",
+    },
+  };
+  return (
+    <div>
+      <Formik
+        initialValues={values}
+        onSubmit={handleSubmit}
+        validate={validate}
+      >
+        {({
+          values,
+          errors,
+          touched,
+          handleChange,
+          handleBlur,
+          handleSubmit,
+        }) => (
+          <Form onSubmit={handleSubmit}>
+            {isRequired && (
+              <Alert color="danger">Please fill all required field.</Alert>
+            )}
+            <FormGroup>
+              <Label className="name" for="name">
+                Name
+              </Label>
+              <Row>
+                <Col sm="2" xs="auto">
+                  <Input type="select" name="salutation">
+                    <option value="Mr">Mr.</option>
+                    <option value="Mrs">Mrs.</option>
+                  </Input>
+                </Col>
+                <Col sm="2" xs="auto">
+                  <Input type="select" name="suffix">
+                    <option value="Jr">Jr.</option>
+                    <option value="Sr">Sr.</option>
+                  </Input>
+                </Col>
+                <Col>
+                  <Input
+                    type="text"
+                    name="firstName"
+                    id="name"
+                    placeholder="First name"
+                    value={values.firstName}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                  {errors.firstName && touched.firstName}
+                </Col>
+                <Col>
+                  <Input
+                    type="text"
+                    name="middleName"
+                    value={values.middleName}
+                    placeholder="MIddle name"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                </Col>
+                <Col>
+                  <Input
+                    type="text"
+                    name="lastName"
+                    value={values.lastName}
+                    placeholder="Last name"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                </Col>
+              </Row>
+            </FormGroup>
+            <FormGroup>
+              <Row>
+                <Col sm="4">
+                  <Label>Business Name</Label>
+                  <Input
+                    type="text"
+                    name="orgParentName"
+                    value={values.orgParentName}
+                    placeholder="Business Name"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                </Col>
+              </Row>
+            </FormGroup>
+            <FormGroup>
+              <Row>
+                <Col sm="4">
+                  <Label>Site Name</Label>
+                  <Input
+                    type="text"
+                    name="orgName"
+                    placeholder="Site Name"
+                    value={values.orgName}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                </Col>
+              </Row>
+            </FormGroup>
+            <FormGroup>
+              <Row>
+                <Col sm="4">
+                  <Label>Base Price Name</Label>
+                  <Input
+                    type="text"
+                    name="dbcName"
+                    placeholder="Price name"
+                    value={values.dbcName}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                </Col>
+              </Row>
+            </FormGroup>
+            <FormGroup>
+              <Row>
+                <Col sm="4">
+                  <Label>Manager</Label>
+                  <Input
+                    type="text"
+                    name="marketManager"
+                    placeholder="Market Manager"
+                    value={values.marketManager}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                </Col>
+              </Row>
+            </FormGroup>
+            <FormGroup>
+              <Row>
+                <Col sm="4">
+                  <Label>Business Type</Label>
+                  <Input
+                    type="text"
+                    name="businessType"
+                    placeholder="Business Type"
+                    value={values.businessType}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                </Col>
+              </Row>
+            </FormGroup>
+            <FormGroup>
+             <Row>
+             <Col sm="4">
+               <Label>Email</Label>
+              <Input
+                type="email"
+                name="emailAddress"
+                placeholder="Email"
+                value={values.emailAddress}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+               </Col>
+             </Row>
+            </FormGroup>
+            <FormGroup>
+              <Label>Address</Label>
+              <Row>
+                <Col>
+                  <Input
+                    type="text"
+                    name="addressStreet"
+                    placeholder="Street address"
+                    value={values.addressStreet}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                  <Label style={styles.fontWeight300}>Street address</Label>
+                </Col>
+              </Row>
+              <Row className="mt-4">
+                <Col>
+                  <Input
+                    type="text"
+                    name="addressCity"
+                    placeholder="City"
+                    value={values.addressCity}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                  <Label style={styles.fontWeight300}>City</Label>
+                </Col>
+                <Col>
+                  <Input
+                    type="text"
+                    name="addressState"
+                    placeholder="state"
+                    value={values.addressState}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                  <Label style={styles.fontWeight300}>
+                    State / Province / Region
+                  </Label>
+                </Col>
+              </Row>
+              <Row className="mt-4">
+                <Col sm="4">
+                  <Input
+                    type="text"
+                    name="addressZip"
+                    placeholder="Postal Code"
+                    value={values.addressZip}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                  <Label style={styles.fontWeight300}>Postal / Zipcode</Label>
+                </Col>
+              </Row>
+            </FormGroup>
+
+            <FormGroup>
+              <Label>Phone</Label>
+              <PhoneInput
+                country={"us"}
+                disableDropdown
+                value={values.phone}
+                onChange={handleChange}
+              />
+            </FormGroup>
+            <button type="submit">Save & Continue</button>
+          </Form>
+        )}
+      </Formik>
+    </div>
+  );
+};
+export default FormikFormComponent;
