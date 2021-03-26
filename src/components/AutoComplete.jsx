@@ -27,6 +27,16 @@ const AutoComplete = () => {
     }
   };
 
+  const handleChange = (selectedOptions, e) => {
+    debugger
+    const obj = {
+      prospectId: 1234,
+      name: selectedOptions[0].name
+    }
+    console.log(selectedOptions); 
+    setMultiSelections([obj]);
+  }
+
   return (
     <Container>
       {isRequired && !multiSelections.length && (
@@ -35,10 +45,11 @@ const AutoComplete = () => {
       <FormGroup style={{ marginTop: "20px" }}>
         <Label>Multiple Selections</Label>
         <Typeahead
-          id="basic-typeahead-multiple"
+          id="terminal-typeahead-multiple"
+        clearButton 
           labelKey="name"
           multiple
-          onChange={setMultiSelections}
+          onChange={handleChange}
           options={options}
           placeholder="Choose Users..."
           selected={multiSelections}

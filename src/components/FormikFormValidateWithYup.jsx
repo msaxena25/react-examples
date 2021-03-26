@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Formik } from "formik";
+import * as Yup from "yup";
 import {
   Row,
   Col,
@@ -15,17 +16,16 @@ import "react-phone-input-2/lib/style.css";
 import "./style.css";
 import EmailOptions from "./EmailOptions";
 
-const FormikFormComponent = (props) => {
+const FormikFormValidateWithYup = (props) => {
   const [prospectId, setProspectId] = useState("");
   const [isRequired, setIsRequired] = useState(false);
-  const [phone, setPhone] =  useState('');
   const values = {
     firstName: "",
     lastName: "",
     emailAddress: "jane.doe@a.com",
     orgName: "ABC Company",
     orgParentName: "ABC Parent Company",
-    phoneNumber: "",
+    phoneNumber: "123456789",
     addressStreet: "123 ABC St",
     addressCity: "Dallas",
     addressState: "TX",
@@ -37,29 +37,31 @@ const FormikFormComponent = (props) => {
     middleName: "",
     suffix: "",
     marketManager: "MM1",
-    businessType: null,
+    businessType: "DODO",
   };
-  const validate = (values) => {
-    const errors = {};
-    return errors;
-  };
+
+  // can add all properties here
+  const schema = Yup.object().shape({
+    firstName: Yup.string().required('Required'),
+    lastName: Yup.string().required('Required'),
+    emailAddress: Yup.string().email("Invalid email address").required(),
+  });
+ 
+
   const handleSubmit = (values, { setSubmitting }) => {
-    values.phoneNumber = phone;
-    const tempValues = Object.assign({}, values);
-    delete tempValues.suffix; // not mandatory field
-    delete tempValues.salutation; // not mandatory field
-    const valuesarr = Object.values(tempValues);
+    const valuesarr = Object.values(values);
+
     if (valuesarr.includes("")) {
       setIsRequired(true);
     } else {
       setIsRequired(false);
 
       setProspectId(35345345345);
-      props.parentCallback({ prospectId: 35345345345 }); // send Id to parent component
       // call post api
       setTimeout(() => {
         alert(JSON.stringify(values, null, 2));
         setSubmitting(false);
+        props.parentCallback({ prospectId: 35345345345 }); // send Id to parent component
       }, 400);
     }
   };
@@ -72,15 +74,12 @@ const FormikFormComponent = (props) => {
       top: "35px",
     },
   };
-  const onPhoneNumberChange = (e) => {
-      setPhone(e);
-  }
   return (
     <div>
       <Formik
         initialValues={values}
+        validationSchema={schema}
         onSubmit={handleSubmit}
-        validate={validate}
       >
         {({
           values,
@@ -135,7 +134,7 @@ const FormikFormComponent = (props) => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
-                  {errors.firstName && touched.firstName}
+                  {errors.firstName && touched.firstName && errors.firstName}
                 </Col>
                 <Col>
                   <Input
@@ -156,6 +155,7 @@ const FormikFormComponent = (props) => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
+                    {errors.lastName && touched.lastName && errors.lastName}
                 </Col>
               </Row>
             </FormGroup>
@@ -246,6 +246,7 @@ const FormikFormComponent = (props) => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
+                  {errors.emailAddress && touched.emailAddress && errors.emailAddress}
                 </Col>
               </Row>
             </FormGroup>
@@ -308,13 +309,10 @@ const FormikFormComponent = (props) => {
             <FormGroup>
               <Label>Phone</Label>
               <PhoneInput
-                inputProps={{
-                  name: "phoneNumber",
-                }}
                 country={"us"}
                 disableDropdown
-                value={values.phoneNumber}
-                onChange={onPhoneNumberChange}
+                value={values.phone}
+                onChange={handleChange}
               />
             </FormGroup>
             <button type="submit">Save & Continue</button>
@@ -324,4 +322,4 @@ const FormikFormComponent = (props) => {
     </div>
   );
 };
-export default FormikFormComponent;
+export default FormikFormValidateWithYup;
