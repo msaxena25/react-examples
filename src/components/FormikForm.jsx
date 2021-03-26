@@ -93,13 +93,25 @@ const FormikFormComponent = (props) => {
               </Label>
               <Row>
                 <Col sm="2" xs="auto">
-                  <Input type="select" name="salutation">
+                  <Input
+                    type="select"
+                    name="salutation"
+                    value={values.salutation}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  >
                     <option value="Mr">Mr.</option>
                     <option value="Mrs">Mrs.</option>
                   </Input>
                 </Col>
                 <Col sm="2" xs="auto">
-                  <Input type="select" name="suffix">
+                  <Input
+                    type="select"
+                    name="suffix"
+                    value={values.suffix}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  >
                     <option value="Jr">Jr.</option>
                     <option value="Sr">Sr.</option>
                   </Input>
@@ -214,19 +226,19 @@ const FormikFormComponent = (props) => {
               </Row>
             </FormGroup>
             <FormGroup>
-             <Row>
-             <Col sm="4">
-               <Label>Email</Label>
-              <Input
-                type="email"
-                name="emailAddress"
-                placeholder="Email"
-                value={values.emailAddress}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-               </Col>
-             </Row>
+              <Row>
+                <Col sm="4">
+                  <Label>Email</Label>
+                  <Input
+                    type="email"
+                    name="emailAddress"
+                    placeholder="Email"
+                    value={values.emailAddress}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                </Col>
+              </Row>
             </FormGroup>
             <FormGroup>
               <Label>Address</Label>

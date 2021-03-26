@@ -20,6 +20,8 @@ import {
 import classnames from "classnames";
 import FormikFormComponent from "./FormikForm";
 import EmailOptions from "./EmailOptions";
+import AsyncAutoComplete from "./AsyncAutoComplete";
+import AutoComplete from "./AutoComplete";
 
 class StepperComponent extends Component {
   constructor() {
@@ -111,15 +113,8 @@ class StepperComponent extends Component {
           <TabPane tabId="1">
             <Row>
               <Col sm="6">
-                <Card body>
-                  <CardTitle>Auto Search, Search Git hub Users</CardTitle>
-                </Card>
-              </Col>
-              <Col sm="6">
-                <Card body>
-                  <CardTitle>Special Title Treatment</CardTitle>
-
-                  <Button
+                <AutoComplete></AutoComplete>
+              <Button
                     color="secondary"
                     size="sm"
                     onClick={() => this.toggle(2)}
@@ -129,7 +124,6 @@ class StepperComponent extends Component {
                   <Button color="link" size="sm" onClick={() => this.toggle(0)}>
                     Prev
                   </Button>
-                </Card>
               </Col>
             </Row>
           </TabPane>
