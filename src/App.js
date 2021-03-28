@@ -12,8 +12,8 @@ import Basic from './components/SampleForm';
 function App() {
   return (
     <div>
-      {/* <Tabs></Tabs> */}
-      <StepperComponent></StepperComponent>
+      <Tabs></Tabs>
+      {/* <StepperComponent></StepperComponent> */}
       {/* <AddProspectForm></AddProspectForm> */}
     
       {/* <Basic></Basic> */}

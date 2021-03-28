@@ -17,6 +17,7 @@ import EmailOptions from "./EmailOptions";
 import AsyncAutoComplete from "./AsyncAutoComplete";
 import FontAwesome from "react-fontawesome";
 import FormikFormComponent from "./FormikForm";
+import AutoComplete from "./AutoComplete";
 
 const Tabs = (props) => {
   const [activeTab, setActiveTab] = useState("1");
@@ -26,9 +27,14 @@ const Tabs = (props) => {
     if (activeTab !== tab) setActiveTab(tab);
   };
 
+  /**
+   * We have to enable next two tabs only when we get prospectId from first tab
+   * Pass that prospect Id to next both tabs in props.
+   * @param {*} childData 
+   */
   const handleCallback = (childData) =>{
     console.log(childData);
-    setProspectId(childData);
+    setProspectId(childData.prospectId);
 }
 
 
@@ -45,8 +51,9 @@ const Tabs = (props) => {
             Tab1
           </NavLink>
         </NavItem>
-        <NavItem disabled>
+        <NavItem>
           <NavLink
+            disabled = {!prospectId}
             className={classnames({ active: activeTab === "2" })}
             onClick={() => {
               toggle("2");
@@ -57,6 +64,7 @@ const Tabs = (props) => {
         </NavItem>
         <NavItem>
           <NavLink
+          disabled = {!prospectId}
             className={classnames({ active: activeTab === "3" })}
             onClick={() => {
               toggle("3");
@@ -80,8 +88,8 @@ const Tabs = (props) => {
             <Col sm="6">
               <Card body>
                 <CardTitle>Auto Search, Search Git hub Users</CardTitle>
-
-                <AsyncAutoComplete prospectId={prospectId}></AsyncAutoComplete>
+                <AutoComplete  prospectId={prospectId}></AutoComplete>
+                {/* <AsyncAutoComplete prospectId={prospectId}></AsyncAutoComplete> */}
               </Card>
             </Col>
           </Row>

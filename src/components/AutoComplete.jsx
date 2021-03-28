@@ -3,40 +3,51 @@ import { Typeahead } from "react-bootstrap-typeahead";
 import { FormGroup, Label, Button, Container, Alert } from "reactstrap";
 import AppService from "./app.service";
 
-const AutoComplete = () => {
+const AutoComplete = (props) => {
   const [multiSelections, setMultiSelections] = useState([]);
   const [options, setOptions] = useState([]);
   const [isRequired, setIsRequired] = useState(false);
   const appService = new AppService();
 
   useEffect(() => {
-    appService.getUsers().then((data) => {
-      setOptions(data);
-    });
+
+
+    // appService.getUsers().then((data) => {
+    //   setOptions(data);
+    // });
+
+    setOptions(appService.getStaticData().terminalDataList);
   }, []); // [] => means it will execute only first time after rendering
 
   const saveUser = () => {
-    console.log(multiSelections);
     if (!multiSelections.length) {
       setIsRequired(true);
     } else {
       setIsRequired(false);
-      appService.postUsers({}).then((response) => {
+      const payload = createPayload(multiSelections);
+      appService.postUsers(payload).then((response) => {
         alert("success");
       });
     }
   };
 
-  const handleChange = (selectedOptions, e) => {
-    debugger
-    const obj = {
-      prospectId: 1234,
-      name: selectedOptions[0].name
-    }
-    console.log(selectedOptions); 
-    setMultiSelections([obj]);
-  }
+  console.log('Get Prospect Id', props.prospectId);
 
+  const createPayload = (multiSelections) => {
+    const payload = [];
+    multiSelections.forEach((terminal) => {
+      payload.push({
+        prospectId: props.prospectId,
+        name: terminal.terminalName,
+        id: terminal.terminalId,
+      });
+    });
+
+    return payload;
+  };
+
+  // Don't Override or add your custom handle Change method here. Use setMultiSelections only.
+  // If you have to update data to send in API, then change that data before sending.
   return (
     <Container>
       {isRequired && !multiSelections.length && (
@@ -46,10 +57,10 @@ const AutoComplete = () => {
         <Label>Multiple Selections</Label>
         <Typeahead
           id="terminal-typeahead-multiple"
-        clearButton 
-          labelKey="name"
+          clearButton
+          labelKey="terminalName"
           multiple
-          onChange={handleChange}
+          onChange={setMultiSelections}
           options={options}
           placeholder="Choose Users..."
           selected={multiSelections}

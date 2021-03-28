@@ -57,18 +57,6 @@ class StepperComponent extends Component {
     this.onClickNext = this.onClickNext.bind(this);
   }
 
-  //   componentDidMount() {
-  //     for (let i = 0; i < 4; i++) {
-  //       console.log(i);
-  //       setTimeout(() => {
-  //         const { steps, currentStep } = this.state;
-  //         this.setState({
-  //           currentStep: currentStep + 1,
-  //         });
-  //       }, 100);
-  //     }
-  //   }
-
   toggle(tab) {
     const { steps, currentStep } = this.state;
     this.setState({
