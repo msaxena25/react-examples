@@ -37,10 +37,13 @@ const SideNavigation = () => {
         </div>
       </SidebarHeader>
       <Menu iconShape="square">
-        <MenuItem icon={<FaGem />}>Dashboard</MenuItem>
+        <MenuItem icon={<FaGem />}>
+          {" "}
+          <Link to="/">Stepper Component</Link>
+        </MenuItem>
         <MenuItem icon={<FaGem />}>
           <Link to="/email">Email</Link>
-        </MenuItem> 
+        </MenuItem>
         <SubMenu title="Forms" icon={<FaHeart />}>
           <MenuItem>
             <Link to="/formikform">Formik Form</Link>
