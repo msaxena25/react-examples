@@ -6,6 +6,8 @@ import EmailOptions from "./EmailOptions";
 import AsyncAutoComplete from "./AsyncAutoComplete";
 import AutoComplete from "./AutoComplete";
 import FormikFormComponent from "./FormikForm";
+import RouterComponentA from "./routing-test/RouterComponentA";
+import RouterComponentB from "./routing-test/RouterComponentB";
 
 const RoutingPath = () => {
   return (
@@ -17,6 +19,8 @@ const RoutingPath = () => {
       <Route path="/formikform" component={FormikFormComponent} />
       <Route path="/form" component={AddProspectForm} />
       <Route path="/basic" component={Basic} />
+      <Route path="/routerA" component={RouterComponentA} />
+      <Route path="/routerB" component={RouterComponentB} />
     </Switch>
   );
 };

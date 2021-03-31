@@ -63,6 +63,12 @@ const SideNavigation = () => {
             <Link to="/asynctypeahead">Async Typeahead</Link>
           </MenuItem>
         </SubMenu>
+        <SubMenu title="Router" icon={<FaHeart />}>
+          <MenuItem>
+            <Link to="/routerA">Router A</Link>
+          </MenuItem>
+         
+        </SubMenu>
       </Menu>
     </ProSidebar>
   );
