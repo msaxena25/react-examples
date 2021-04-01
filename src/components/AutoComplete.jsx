@@ -7,7 +7,7 @@ const AutoComplete = (props) => {
   const [multiSelections, setMultiSelections] = useState([]);
   const [options, setOptions] = useState([]);
   const [isRequired, setIsRequired] = useState(false);
-  const appService = new AppService();
+  const appService = new AppService(); // This need to improve
 
   useEffect(() => {
 

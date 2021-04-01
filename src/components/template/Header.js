@@ -1,19 +1,15 @@
 import React, { useState } from "react";
+import { AiOutlineUser } from "react-icons/ai";
 import {
   Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
   Nav,
+  Navbar,
+  NavbarBrand,
+  NavbarText,
+  NavbarToggler,
   NavItem,
   NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  NavbarText,
 } from "reactstrap";
-import { AiOutlineUser } from "react-icons/ai";
 
 const Header = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,14 +31,12 @@ const Header = (props) => {
                 GitHub
               </NavLink>
             </NavItem>
-           
           </Nav>
           <NavbarText>
             <div>
               <AiOutlineUser></AiOutlineUser>
             </div>
           </NavbarText>
-        
         </Collapse>
       </Navbar>
     </div>

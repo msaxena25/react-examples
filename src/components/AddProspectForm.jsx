@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Row, Col, Form, FormGroup, Label, Input, Container } from "reactstrap";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import { Col, Container, Form, FormGroup, Input, Label, Row } from "reactstrap";
 
 class AddProspectForm extends Component {
   constructor(props) {

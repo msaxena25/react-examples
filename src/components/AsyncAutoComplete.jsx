@@ -1,8 +1,9 @@
 
 import axios from "axios";
-import React, {useState, Fragment, useEffect} from "react";
+import React, { Fragment, useState } from "react";
 import { AsyncTypeahead } from 'react-bootstrap-typeahead';
 const SEARCH_URI = 'https://api.github.com/search/users';
+
 const AsyncAutoComplete = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [options, setOptions] = useState([]);

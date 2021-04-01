@@ -1,20 +1,10 @@
-import React, { useState } from "react";
 import { Formik } from "formik";
-import * as Yup from "yup";
-import {
-  Row,
-  Col,
-  Container,
-  Label,
-  FormGroup,
-  Form,
-  Input,
-  Alert,
-} from "reactstrap";
+import React, { useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import { Alert, Col, Form, FormGroup, Input, Label, Row } from "reactstrap";
+import * as Yup from "yup";
 import "./style.css";
-import EmailOptions from "./EmailOptions";
 
 const FormikFormValidateWithYup = (props) => {
   const [prospectId, setProspectId] = useState("");
@@ -42,11 +32,10 @@ const FormikFormValidateWithYup = (props) => {
 
   // can add all properties here
   const schema = Yup.object().shape({
-    firstName: Yup.string().required('Required'),
-    lastName: Yup.string().required('Required'),
+    firstName: Yup.string().required("Required"),
+    lastName: Yup.string().required("Required"),
     emailAddress: Yup.string().email("Invalid email address").required(),
   });
- 
 
   const handleSubmit = (values, { setSubmitting }) => {
     const valuesarr = Object.values(values);
@@ -155,7 +144,7 @@ const FormikFormValidateWithYup = (props) => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
-                    {errors.lastName && touched.lastName && errors.lastName}
+                  {errors.lastName && touched.lastName && errors.lastName}
                 </Col>
               </Row>
             </FormGroup>
@@ -246,7 +235,9 @@ const FormikFormValidateWithYup = (props) => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
-                  {errors.emailAddress && touched.emailAddress && errors.emailAddress}
+                  {errors.emailAddress &&
+                    touched.emailAddress &&
+                    errors.emailAddress}
                 </Col>
               </Row>
             </FormGroup>

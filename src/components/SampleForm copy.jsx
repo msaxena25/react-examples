@@ -1,6 +1,6 @@
-import React from "react";
 import { Formik } from "formik";
-import { Row, Col, Container, Label, FormGroup, Form, Input } from "reactstrap";
+import React from "react";
+import { FormGroup, Input, Label } from "reactstrap";
 
 const Basic = () => {
   const values = { email: "", password: "" };

@@ -1,25 +1,21 @@
+import classnames from "classnames";
 import React, { useState } from "react";
 import {
-  TabContent,
-  TabPane,
+  Card,
+  CardTitle,
+  Col,
   Nav,
   NavItem,
   NavLink,
-  Card,
-  Button,
-  CardTitle,
-  CardText,
   Row,
-  Col,
+  TabContent,
+  TabPane,
 } from "reactstrap";
-import classnames from "classnames";
-import EmailOptions from "./EmailOptions";
-import AsyncAutoComplete from "./AsyncAutoComplete";
-import FontAwesome from "react-fontawesome";
-import FormikFormComponent from "./FormikForm";
 import AutoComplete from "./AutoComplete";
+import EmailOptions from "./EmailOptions";
+import FormikFormComponent from "./FormikForm";
 
-const Tabs = (props) => {
+const Tabs = () => {
   const [activeTab, setActiveTab] = useState("1");
   const [prospectId, setProspectId] = useState("");
 
@@ -30,13 +26,12 @@ const Tabs = (props) => {
   /**
    * We have to enable next two tabs only when we get prospectId from first tab
    * Pass that prospect Id to next both tabs in props.
-   * @param {*} childData 
+   * @param {*} childData
    */
-  const handleCallback = (childData) =>{
+  const handleCallback = (childData) => {
     console.log(childData);
     setProspectId(childData.prospectId);
-}
-
+  };
 
   return (
     <div>
@@ -53,7 +48,7 @@ const Tabs = (props) => {
         </NavItem>
         <NavItem>
           <NavLink
-            disabled = {!prospectId}
+            disabled={!prospectId}
             className={classnames({ active: activeTab === "2" })}
             onClick={() => {
               toggle("2");
@@ -64,7 +59,7 @@ const Tabs = (props) => {
         </NavItem>
         <NavItem>
           <NavLink
-          disabled = {!prospectId}
+            disabled={!prospectId}
             className={classnames({ active: activeTab === "3" })}
             onClick={() => {
               toggle("3");
@@ -79,7 +74,9 @@ const Tabs = (props) => {
           <Row>
             <Col sm="12">
               <h4>Tab 1 Contents</h4>
-              <FormikFormComponent parentCallback = {handleCallback}></FormikFormComponent>
+              <FormikFormComponent
+                parentCallback={handleCallback}
+              ></FormikFormComponent>
             </Col>
           </Row>
         </TabPane>
@@ -88,7 +85,7 @@ const Tabs = (props) => {
             <Col sm="6">
               <Card body>
                 <CardTitle>Auto Search, Search Git hub Users</CardTitle>
-                <AutoComplete  prospectId={prospectId}></AutoComplete>
+                <AutoComplete prospectId={prospectId}></AutoComplete>
                 {/* <AsyncAutoComplete prospectId={prospectId}></AsyncAutoComplete> */}
               </Card>
             </Col>

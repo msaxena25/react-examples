@@ -1,20 +1,19 @@
-import React, { Fragment, useState } from "react";
+import { ErrorMessage, Formik } from "formik";
+import React, { useState } from "react";
+import FontAwesome from "react-fontawesome";
 import {
-  FormGroup,
-  Label,
-  Row,
-  Col,
-  Input,
   Button,
-  ListGroup,
-  ListGroupItem,
+  Col,
+  Form,
+  FormGroup,
+  Input,
   InputGroup,
   InputGroupAddon,
-  Container,
-  Form,
+  Label,
+  ListGroup,
+  ListGroupItem,
+  Row,
 } from "reactstrap";
-import FontAwesome from "react-fontawesome";
-import { Formik, ErrorMessage, Field } from "formik";
 
 const EmailOptions = (props) => {
   const values = {
@@ -22,7 +21,7 @@ const EmailOptions = (props) => {
     emailNotification: false,
     deliveryMethod: 1,
   };
- // const [inputEmail, setInputEmail] = useState("");
+  // const [inputEmail, setInputEmail] = useState("");
   const [emailList, setEmailList] = useState([]);
 
   const styles = {
@@ -109,7 +108,10 @@ const EmailOptions = (props) => {
                     onBlur={handleBlur}
                   />
                   <InputGroupAddon addonType="append">
-                    <Button color="secondary" onClick={() => onAdd(values.inputEmail)}>
+                    <Button
+                      color="secondary"
+                      onClick={() => onAdd(values.inputEmail)}
+                    >
                       Add
                     </Button>
                   </InputGroupAddon>
@@ -152,7 +154,7 @@ const EmailOptions = (props) => {
               <Col>
                 <Input
                   type="select"
-                  name="deliveryMethod"  
+                  name="deliveryMethod"
                   value={values.deliveryMethod}
                   onChange={handleChange}
                   onBlur={handleBlur}

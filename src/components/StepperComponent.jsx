@@ -1,27 +1,15 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
-import Stepper from "react-stepper-horizontal";
-import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import Stepper from "react-stepper-horizontal";
 import {
-  TabContent,
-  TabPane,
-  Nav,
-  NavItem,
-  NavLink,
-  Card,
   Button,
-  CardTitle,
-  CardText,
-  Row,
   Col,
-  Container,
+  Container, Row, TabContent,
+  TabPane
 } from "reactstrap";
-import classnames from "classnames";
-import FormikFormComponent from "./FormikForm";
-import EmailOptions from "./EmailOptions";
-import AsyncAutoComplete from "./AsyncAutoComplete";
 import AutoComplete from "./AutoComplete";
+import EmailOptions from "./EmailOptions";
+import FormikFormComponent from "./FormikForm";
 
 class StepperComponent extends Component {
   constructor() {
@@ -58,7 +46,6 @@ class StepperComponent extends Component {
   }
 
   toggle(tab) {
-    const { steps, currentStep } = this.state;
     this.setState({
       currentStep: tab,
     });
@@ -71,7 +58,7 @@ class StepperComponent extends Component {
   };
 
   onClickNext() {
-    const { steps, currentStep } = this.state;
+    const {currentStep } = this.state;
     this.setState({
       currentStep: currentStep + 1,
     });

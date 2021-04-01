@@ -1,10 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
-
+import { Col, Row } from "reactstrap";
+import RoutingPath from "./RoutingPath";
 import Header from "./template/Header";
 import SideNavigation from "./template/SideNavigation";
-import { Row, Col } from "reactstrap";
-import RoutingPath from "./RoutingPath";
 
 const Routing = () => {
   const styles = {

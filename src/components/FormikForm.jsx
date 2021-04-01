@@ -1,24 +1,14 @@
-import React, { useState } from "react";
 import { Formik } from "formik";
-import {
-  Row,
-  Col,
-  Container,
-  Label,
-  FormGroup,
-  Form,
-  Input,
-  Alert,
-} from "reactstrap";
+import React, { useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import { Alert, Col, Form, FormGroup, Input, Label, Row } from "reactstrap";
 import "./style.css";
-import EmailOptions from "./EmailOptions";
 
 const FormikFormComponent = (props) => {
-  const [prospectId, setProspectId] = useState("");
+  const [, setProspectId] = useState("");
   const [isRequired, setIsRequired] = useState(false);
-  const [phone, setPhone] =  useState('');
+  const [phone, setPhone] = useState("");
   const values = {
     firstName: "",
     lastName: "",
@@ -73,8 +63,8 @@ const FormikFormComponent = (props) => {
     },
   };
   const onPhoneNumberChange = (e) => {
-      setPhone(e);
-  }
+    setPhone(e);
+  };
   return (
     <div>
       <Formik

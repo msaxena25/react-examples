@@ -1,7 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { Button } from "reactstrap";
 
 const RouterComponentA = (props) => {
+
+    useEffect(() => {
+        const params = props.match;
+        console.table(params);
+      
+    }, [props.match]);
   /**
    * Router Navigation is done using props.history
    * See RouterComponentB for other way to route using hook
