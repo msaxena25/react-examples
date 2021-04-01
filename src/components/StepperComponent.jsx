@@ -1,12 +1,7 @@
 import React, { Component } from "react";
 import "react-phone-input-2/lib/style.css";
 import Stepper from "react-stepper-horizontal";
-import {
-  Button,
-  Col,
-  Container, Row, TabContent,
-  TabPane
-} from "reactstrap";
+import { Button, Col, Container, Row, TabContent, TabPane } from "reactstrap";
 import AutoComplete from "./AutoComplete";
 import EmailOptions from "./EmailOptions";
 import FormikFormComponent from "./FormikForm";
@@ -58,10 +53,16 @@ class StepperComponent extends Component {
   };
 
   onClickNext() {
-    const {currentStep } = this.state;
-    this.setState({
-      currentStep: currentStep + 1,
-    });
+    const { currentStep } = this.state;
+    this.setState(
+      {
+        currentStep: currentStep + 1,
+      },
+      () => {
+        // If need to call when a single state change , you can use setState callback
+        console.log(">>>>>>> State Changed >>>> ", this.state.currentStep);
+      }
+    );
   }
 
   render() {
@@ -71,7 +72,7 @@ class StepperComponent extends Component {
       <div>
         <Stepper steps={steps} activeStep={currentStep} />
         <Container>
-        <hr/>
+          <hr />
         </Container>
         <TabContent activeTab={currentStep.toString()}>
           <TabPane tabId="0">
@@ -89,16 +90,16 @@ class StepperComponent extends Component {
             <Row>
               <Col sm="6">
                 <AutoComplete></AutoComplete>
-              <Button
-                    color="secondary"
-                    size="sm"
-                    onClick={() => this.toggle(2)}
-                  >
-                    Next
-                  </Button>
-                  <Button color="link" size="sm" onClick={() => this.toggle(0)}>
-                    Prev
-                  </Button>
+                <Button
+                  color="secondary"
+                  size="sm"
+                  onClick={() => this.toggle(2)}
+                >
+                  Next
+                </Button>
+                <Button color="link" size="sm" onClick={() => this.toggle(0)}>
+                  Prev
+                </Button>
               </Col>
             </Row>
           </TabPane>
