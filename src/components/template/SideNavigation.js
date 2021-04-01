@@ -1,18 +1,15 @@
+import { useState } from "react";
+import { AiOutlineMenu } from "react-icons/ai";
+import { FaGem, FaHeart } from "react-icons/fa";
 import {
-  ProSidebar,
-  SidebarHeader,
-  SidebarFooter,
-  SidebarContent,
   Menu,
   MenuItem,
+  ProSidebar,
+  SidebarHeader,
   SubMenu,
 } from "react-pro-sidebar";
-import { Link } from "react-router-dom";
-
 import "react-pro-sidebar/dist/css/styles.css";
-import { FaGem, FaHeart } from "react-icons/fa";
-import { AiOutlineMenu } from "react-icons/ai";
-import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const SideNavigation = () => {
   const [collapsed, setCollapsed] = useState(false);
@@ -65,9 +62,8 @@ const SideNavigation = () => {
         </SubMenu>
         <SubMenu title="Router" icon={<FaHeart />}>
           <MenuItem>
-            <Link to="/routerA">Router A</Link>
+            <Link to="/routerA/22/react">Router A</Link>
           </MenuItem>
-         
         </SubMenu>
       </Menu>
     </ProSidebar>
