@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Typeahead } from "react-bootstrap-typeahead";
+import { Typeahead, Menu, MenuItem } from "react-bootstrap-typeahead";
 import { FormGroup, Label, Button, Container, Alert } from "reactstrap";
 import AppService from "./app.service";
 
@@ -10,8 +10,6 @@ const AutoComplete = (props) => {
   const appService = new AppService(); // This need to improve
 
   useEffect(() => {
-
-
     // appService.getUsers().then((data) => {
     //   setOptions(data);
     // });
@@ -31,7 +29,7 @@ const AutoComplete = (props) => {
     }
   };
 
-  console.log('Get Prospect Id', props.prospectId);
+  console.log("Get Prospect Id", props.prospectId);
 
   const createPayload = (multiSelections) => {
     const payload = [];
@@ -58,10 +56,21 @@ const AutoComplete = (props) => {
         <Typeahead
           id="terminal-typeahead-multiple"
           clearButton
+          // we can function custom function inside labelKey:  labelKey={(option) => `${option.terminalName} ${option.terminalCode}`}
           labelKey="terminalName"
           multiple
           onChange={setMultiSelections}
           options={options}
+          // renderMenu is a property that takes a function and return custom menu
+          renderMenu={(results, menuProps) => (
+            <Menu {...menuProps}>
+              {results.map((result, index) => (
+                <MenuItem option={result} position={index}>
+                  {result.terminalName} - {result.terminalCode}
+                </MenuItem>
+              ))}
+            </Menu>
+          )}
           placeholder="Choose Users..."
           selected={multiSelections}
         />
