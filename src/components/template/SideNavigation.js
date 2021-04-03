@@ -34,13 +34,13 @@ const SideNavigation = () => {
         </div>
       </SidebarHeader>
       <Menu iconShape="square">
-        <MenuItem icon={<FaGem />}>
+        {/* <MenuItem icon={<FaGem />}>
           {" "}
           <Link to="/">Stepper Component</Link>
         </MenuItem>
         <MenuItem icon={<FaGem />}>
           <Link to="/email">Email</Link>
-        </MenuItem>
+        </MenuItem> */}
         <SubMenu title="Forms" icon={<FaHeart />}>
           <MenuItem>
             <Link to="/formikform">Formik Form</Link>
@@ -50,6 +50,17 @@ const SideNavigation = () => {
           </MenuItem>
           <MenuItem>
             <Link to="/basic">Simple Form</Link>
+          </MenuItem>
+        </SubMenu>
+        <SubMenu title="Table & Grids" icon={<FaHeart />}>
+          <MenuItem>
+            <Link to="/reactstraptable">Reactstrap Table</Link>
+          </MenuItem>
+          <MenuItem>
+            <Link to="/reactaggrid">React Ag Grid</Link>
+          </MenuItem>
+          <MenuItem>
+            <Link to="/reactdatacomponentgrid">React Data Component Grid</Link>
           </MenuItem>
         </SubMenu>
         <SubMenu title="AutoComplete" icon={<FaHeart />}>

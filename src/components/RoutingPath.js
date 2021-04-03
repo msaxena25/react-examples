@@ -4,6 +4,9 @@ import AsyncAutoComplete from "./AsyncAutoComplete";
 import AutoComplete from "./AutoComplete";
 import EmailOptions from "./EmailOptions";
 import FormikFormComponent from "./FormikForm";
+import ReactAgGrid from "./grid-examples/ReactAgGrid";
+import ReactDataComponentGrid from "./grid-examples/ReactDataComponentGrid";
+import ReactStrapSimpleTable from "./grid-examples/ReactStrapSimpleTable";
 import RouteGuard from "./routing-test/RouteGuard";
 import RouterComponentA from "./routing-test/RouterComponentA";
 import RouterComponentB from "./routing-test/RouterComponentB";
@@ -29,6 +32,13 @@ const RoutingPath = () => {
         component={RouterComponentB}
         authenticate={true}
       ></RouteGuard>
+
+      <Route path="/reactstraptable" component={ReactStrapSimpleTable} />
+      <Route path="/reactaggrid" component={ReactAgGrid} />
+      <Route
+        path="/reactdatacomponentgrid"
+        component={ReactDataComponentGrid}
+      />
     </Switch>
   );
 };
