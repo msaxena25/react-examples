@@ -1,8 +1,9 @@
-
 import axios from "axios";
 import React, { Fragment, useState } from "react";
-import { AsyncTypeahead } from 'react-bootstrap-typeahead';
-const SEARCH_URI = 'https://api.github.com/search/users';
+import { AsyncTypeahead } from "react-bootstrap-typeahead";
+import { BASE_URL_GITHUB } from "../config/constant";
+// Another way:  import * as Constants from "../config/constant";  USE:  Constants.BASE_URL_GITHUB
+import HttpHandler from "../core/HttpHandler";
 
 const AsyncAutoComplete = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -10,8 +11,11 @@ const AsyncAutoComplete = () => {
   const handleSearch = (query) => {
     setIsLoading(true);
 
-    axios.get(`${SEARCH_URI}?q=${query}+in:login&page=1&per_page=50`)
-      .then(response => {
+    const SEARCH_URI = `${BASE_URL_GITHUB}/search/users`;
+
+    axios
+      .get(`${SEARCH_URI}?q=${query}+in:login&page=1&per_page=50`)
+      .then((response) => {
         const options = response.data.items.map((i) => ({
           avatar_url: i.avatar_url,
           id: i.id,
@@ -44,9 +48,9 @@ const AsyncAutoComplete = () => {
             alt={option.login}
             src={option.avatar_url}
             style={{
-              height: '24px',
-              marginRight: '10px',
-              width: '24px',
+              height: "24px",
+              marginRight: "10px",
+              width: "24px",
             }}
           />
           <span>{option.login}</span>
@@ -56,4 +60,4 @@ const AsyncAutoComplete = () => {
   );
 };
 
-export default AsyncAutoComplete;
+export default HttpHandler(AsyncAutoComplete);
