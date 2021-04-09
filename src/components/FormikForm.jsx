@@ -1,5 +1,5 @@
 import { Formik } from "formik";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { Alert, Col, Form, FormGroup, Input, Label, Row } from "reactstrap";
@@ -9,7 +9,8 @@ const FormikFormComponent = (props) => {
   const [, setProspectId] = useState("");
   const [isRequired, setIsRequired] = useState(false);
   const [phone, setPhone] = useState("");
-  const values = {
+
+  let initialData = {
     firstName: "",
     lastName: "",
     emailAddress: "jane.doe@a.com",
@@ -29,6 +30,21 @@ const FormikFormComponent = (props) => {
     marketManager: "MM1",
     businessType: null,
   };
+  const [values, setValues] = useState(initialData);
+
+  useEffect(() => {
+    const propsValues = {
+      firstName: "Hello",
+      lastName: "Hello 1",
+      emailAddress: "hello@a.com",
+      orgName: "Hello Company",
+      orgParentName: "Hello Parent Company",
+      phoneNumber: "00000000",
+      addressStreet: "hello",
+    };
+    setValues(propsValues);
+  }, []);
+
   const validate = (values) => {
     const errors = {};
     return errors;
@@ -68,6 +84,7 @@ const FormikFormComponent = (props) => {
   return (
     <div>
       <Formik
+        enableReinitialize={true}
         initialValues={values}
         onSubmit={handleSubmit}
         validate={validate}
