@@ -34,13 +34,13 @@ const SideNavigation = () => {
         </div>
       </SidebarHeader>
       <Menu iconShape="square">
-        {/* <MenuItem icon={<FaGem />}>
+        <MenuItem icon={<FaGem />}>
           {" "}
           <Link to="/">Stepper Component</Link>
         </MenuItem>
         <MenuItem icon={<FaGem />}>
           <Link to="/email">Email</Link>
-        </MenuItem> */}
+        </MenuItem>
         <SubMenu title="Forms" icon={<FaHeart />}>
           <MenuItem>
             <Link to="/formikform">Formik Form</Link>
@@ -74,6 +74,12 @@ const SideNavigation = () => {
         <SubMenu title="Router" icon={<FaHeart />}>
           <MenuItem>
             <Link to="/routerA/22/react">Router A</Link>
+          </MenuItem>
+        </SubMenu>
+        <SubMenu title="Other" icon={<FaHeart />}>
+          <MenuItem icon={<FaGem />}>
+            {" "}
+            <Link to="/errorboundarytest">Error Boundary Test</Link>
           </MenuItem>
         </SubMenu>
       </Menu>
