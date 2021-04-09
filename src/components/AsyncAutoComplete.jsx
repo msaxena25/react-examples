@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { Fragment, useState } from "react";
 import { AsyncTypeahead } from "react-bootstrap-typeahead";
 import { BASE_URL_GITHUB } from "../config/constant";

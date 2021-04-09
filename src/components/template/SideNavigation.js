@@ -81,6 +81,10 @@ const SideNavigation = () => {
             {" "}
             <Link to="/errorboundarytest">Error Boundary Test</Link>
           </MenuItem>
+          <MenuItem icon={<FaGem />}>
+            {" "}
+            <Link to="/lazyload">Lazy load Component</Link>
+          </MenuItem>
         </SubMenu>
       </Menu>
     </ProSidebar>

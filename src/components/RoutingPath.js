@@ -7,11 +7,13 @@ import FormikFormComponent from "./FormikForm";
 import ReactAgGrid from "./grid-examples/ReactAgGrid";
 import ReactDataComponentGrid from "./grid-examples/ReactDataComponentGrid";
 import ReactStrapSimpleTable from "./grid-examples/ReactStrapSimpleTable";
+import LazyloadComponent from "./LazyloadComponent";
 import RouteGuard from "./routing-test/RouteGuard";
 import RouterComponentA from "./routing-test/RouterComponentA";
 import RouterComponentB from "./routing-test/RouterComponentB";
 import Basic from "./SampleForm";
 import StepperComponent from "./StepperComponent";
+import TestErrorBoundaryComponent from "./TestErrorBoundaryComponent";
 
 const RoutingPath = () => {
   return (
@@ -23,6 +25,7 @@ const RoutingPath = () => {
       <Route path="/formikform" component={FormikFormComponent} />
       <Route path="/form" component={AddProspectForm} />
       <Route path="/basic" component={Basic} />
+      <Route path="/lazyload" component={LazyloadComponent} />
       <Route path="/routerA/:id/:name" component={RouterComponentA} />
       {/* This is Simple Route: <Route path="/routerB" component={RouterComponentB} /> */}
       {/* In Below route we have wrapped this with RouteGuard component and pass authenticate 
@@ -39,6 +42,7 @@ const RoutingPath = () => {
         path="/reactdatacomponentgrid"
         component={ReactDataComponentGrid}
       />
+      <Route path="/errorboundarytest" component={TestErrorBoundaryComponent} />
     </Switch>
   );
 };
