@@ -19,3 +19,11 @@ React Icons: npm i react-icons
 ## https://www.ag-grid.com/react-grid/getting-started/
 
 ## https://www.npmjs.com/package/ag-grid-enterprise
+
+QR Code
+
+## https://www.npmjs.com/package/qrcode.react
+
+## https://www.npmjs.com/package/qr-code-styling
+
+## https://codesandbox.io/s/l8rwl?file=/src/App.js:0-878

@@ -85,6 +85,10 @@ const SideNavigation = () => {
             {" "}
             <Link to="/lazyload">Lazy load Component</Link>
           </MenuItem>
+          <MenuItem icon={<FaGem />}>
+            {" "}
+            <Link to="/qr">QR Code Examples</Link>
+          </MenuItem>
         </SubMenu>
       </Menu>
     </ProSidebar>

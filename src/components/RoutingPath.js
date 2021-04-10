@@ -8,6 +8,7 @@ import ReactAgGrid from "./grid-examples/ReactAgGrid";
 import ReactDataComponentGrid from "./grid-examples/ReactDataComponentGrid";
 import ReactStrapSimpleTable from "./grid-examples/ReactStrapSimpleTable";
 import LazyloadComponent from "./LazyloadComponent";
+import QrCodeContainer from "./qr-code/QrCodeContainer";
 import RouteGuard from "./routing-test/RouteGuard";
 import RouterComponentA from "./routing-test/RouterComponentA";
 import RouterComponentB from "./routing-test/RouterComponentB";
@@ -43,6 +44,7 @@ const RoutingPath = () => {
         component={ReactDataComponentGrid}
       />
       <Route path="/errorboundarytest" component={TestErrorBoundaryComponent} />
+      <Route path="/qr" component={QrCodeContainer} />
     </Switch>
   );
 };
