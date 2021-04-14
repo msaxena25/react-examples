@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { Typeahead, Menu, MenuItem } from "react-bootstrap-typeahead";
-import { FormGroup, Label, Button, Container, Alert } from "reactstrap";
+import React, { useEffect, useState } from "react";
+import { Menu, MenuItem, Typeahead } from "react-bootstrap-typeahead";
+import { Alert, Button, FormGroup, Label } from "reactstrap";
 import AppService from "./app.service";
 
 const AutoComplete = (props) => {
@@ -18,7 +18,7 @@ const AutoComplete = (props) => {
       const selectedData = appService.getSelectedTerminalData();
       multiSelections.push(...selectedData.terminalDataList);
     }
-  }, [props.prospectId]); // [] => means it will execute only first time after rendering
+  }, [props.prospectId,]); // [] => means it will execute only first time after rendering
 
   const saveUser = () => {
     if (!multiSelections.length) {

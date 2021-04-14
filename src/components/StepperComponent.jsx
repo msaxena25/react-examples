@@ -34,7 +34,7 @@ class StepperComponent extends Component {
           },
         },
       ],
-      currentStep: 2,
+      currentStep: 0,
     };
 
     this.onClickNext = this.onClickNext.bind(this);

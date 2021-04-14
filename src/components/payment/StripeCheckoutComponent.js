@@ -36,7 +36,7 @@ function StripeCheckoutComponent() {
 
   return (
     <div style={{ margin: "5%" }}>
-      <img
+      <img alt="stripe"
         style={{ width: "20%", border: "1px gray solid" }}
         src="/images/tshirt.png"
       ></img>

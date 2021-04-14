@@ -28,12 +28,12 @@ const FormikFormComponent = (props) => {
     middleName: "",
     suffix: "",
     marketManager: "MM1",
-    businessType: null,
+    businessType: "",
   };
-  const [values, setValues] = useState(initialData);
+  const [values] = useState(initialData);
 
   useEffect(() => {
-    const propsValues = {
+   /*  const propsValues = {
       firstName: "Hello",
       lastName: "Hello 1",
       emailAddress: "hello@a.com",
@@ -42,7 +42,7 @@ const FormikFormComponent = (props) => {
       phoneNumber: "00000000",
       addressStreet: "hello",
     };
-    setValues(propsValues);
+    setValues(propsValues); */
   }, []);
 
   const validate = (values) => {

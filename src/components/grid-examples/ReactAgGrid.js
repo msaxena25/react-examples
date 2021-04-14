@@ -5,12 +5,12 @@ import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 
 const ReactAgGrid = () => {
-  const [gridApi, setGridApi] = useState(null);
-  const [gridColumnApi, setGridColumnApi] = useState(null);
+  const [setGridApi] = useState(null);
+  const [setGridColumnApi] = useState(null);
   const [rowData, setRowData] = useState(null);
 
-  // static data
-  const data = [
+  // static data - you can use this if test wit static data
+/*   const data = [
     { make: "Toyota", model: "Celica", price: 35000 },
     { make: "Ford", model: "Mondeo", price: 32000 },
     { make: "Porsche", model: "Boxter", price: 72000 },
@@ -20,7 +20,7 @@ const ReactAgGrid = () => {
     { make: "Toyota2", model: "Celica", price: 35000 },
     { make: "Ford2", model: "Mondeo", price: 32000 },
     { make: "Porsche2", model: "Boxter", price: 72000 },
-  ];
+  ]; */
 
   // load dynamic data
   function onGridReady(params) {
