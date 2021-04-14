@@ -34,7 +34,7 @@ export default function QrCodeStylingComponent(props) {
     options.backgroundOptions.color = props.bgColor;
     options.dotsOptions.color = props.fgColor;
     qrCode.append(ref.current);
-  }, []);
+  }, [props.eyeColor, props.centerImageSrc, props.bgColor, props.fgColor]);
 
   useEffect(() => {
     qrCode.update({

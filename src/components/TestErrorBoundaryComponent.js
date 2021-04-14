@@ -22,6 +22,7 @@ class TestErrorBoundaryComponent extends Component {
         if (response) {
           this.setState({ message: response });
         } else {
+          this.setState({ message: "" });
           throw new Error(response); // will open Error Boundary component
         }
       })
@@ -33,7 +34,7 @@ class TestErrorBoundaryComponent extends Component {
     return (
       <ErrorBoundary>
         <h5>This is Class based Component to test error boundary</h5>
-        <h4>{this.state.message}</h4>
+        <h4>{this.state.message ? this.state.message : "error"}</h4>
       </ErrorBoundary>
     );
   }

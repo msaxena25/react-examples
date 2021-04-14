@@ -47,6 +47,33 @@ class AppService {
     ],
   };
 
+  selectedData = {
+    terminalDataList: [
+      {
+        prospectId: 108,
+        terminalId: 1080,
+        terminalName: "Fort Worth Terminal Chevron",
+        updatedBy: "Jane",
+        createdBy: "Jane doe",
+        createTimeStamp: "2021-03-04T16:55:49.025",
+        updateTimeStamp: "2021-03-04T16:55:49.026",
+      },
+      {
+        prospectId: 108,
+        terminalId: 1090,
+        terminalName: "Fort Worth Terminal Chevron",
+        updatedBy: "Jane",
+        createdBy: "Jane doe",
+        createTimeStamp: "2021-03-08T12:10:42.03",
+        updateTimeStamp: "2021-03-08T12:10:42.031",
+      },
+    ],
+  };
+
+  getSelectedTerminalData() {
+    return this.selectedData;
+  }
+
   getStaticData() {
     return this.data;
   }

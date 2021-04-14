@@ -13,9 +13,12 @@ const AutoComplete = (props) => {
     // appService.getUsers().then((data) => {
     //   setOptions(data);
     // });
-
     setOptions(appService.getStaticData().terminalDataList);
-  }, []); // [] => means it will execute only first time after rendering
+    if (props.prospectId) {
+      const selectedData = appService.getSelectedTerminalData();
+      multiSelections.push(...selectedData.terminalDataList);
+    }
+  }, [props.prospectId]); // [] => means it will execute only first time after rendering
 
   const saveUser = () => {
     if (!multiSelections.length) {
@@ -28,8 +31,6 @@ const AutoComplete = (props) => {
       });
     }
   };
-
-  console.log("Get Prospect Id", props.prospectId);
 
   const createPayload = (multiSelections) => {
     const payload = [];
@@ -47,7 +48,7 @@ const AutoComplete = (props) => {
   // Don't Override or add your custom handle Change method here. Use setMultiSelections only.
   // If you have to update data to send in API, then change that data before sending.
   return (
-    <Container>
+    <>
       {isRequired && !multiSelections.length && (
         <Alert color="danger">Please select at least One User.</Alert>
       )}
@@ -65,7 +66,7 @@ const AutoComplete = (props) => {
           renderMenu={(results, menuProps) => (
             <Menu {...menuProps}>
               {results.map((result, index) => (
-                <MenuItem option={result} position={index}>
+                <MenuItem key={index} option={result} position={index}>
                   {result.terminalName} - {result.terminalCode}
                 </MenuItem>
               ))}
@@ -79,7 +80,7 @@ const AutoComplete = (props) => {
       <Button color="primary" onClick={saveUser}>
         Save Users
       </Button>
-    </Container>
+    </>
   );
 };
 
