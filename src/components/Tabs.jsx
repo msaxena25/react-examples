@@ -9,20 +9,19 @@ import {
   NavLink,
   Row,
   TabContent,
-  TabPane,
+  TabPane
 } from "reactstrap";
 import AutoComplete from "./AutoComplete";
 import EmailOptions from "./EmailOptions";
 import FormikFormComponent from "./FormikForm";
 
-const Tabs = () => {
+const Tabs = (props) => {
   const [activeTab, setActiveTab] = useState("1");
-  const [prospectId, setProspectId] = useState("");
+  const [setProspectId] = useState("");
 
   const toggle = (tab) => {
     if (activeTab !== tab) setActiveTab(tab);
   };
-
   /**
    * We have to enable next two tabs only when we get prospectId from first tab
    * Pass that prospect Id to next both tabs in props.
@@ -43,12 +42,12 @@ const Tabs = () => {
               toggle("1");
             }}
           >
-            Tab1
+            Form - {props.id}
           </NavLink>
         </NavItem>
         <NavItem>
           <NavLink
-            disabled={!prospectId}
+            // disabled={!prospectId}
             className={classnames({ active: activeTab === "2" })}
             onClick={() => {
               toggle("2");
@@ -59,7 +58,7 @@ const Tabs = () => {
         </NavItem>
         <NavItem>
           <NavLink
-            disabled={!prospectId}
+            // disabled={!prospectId}
             className={classnames({ active: activeTab === "3" })}
             onClick={() => {
               toggle("3");
@@ -73,7 +72,6 @@ const Tabs = () => {
         <TabPane tabId="1">
           <Row>
             <Col sm="12">
-              <h4>Tab 1 Contents</h4>
               <FormikFormComponent
                 parentCallback={handleCallback}
               ></FormikFormComponent>
@@ -82,20 +80,19 @@ const Tabs = () => {
         </TabPane>
         <TabPane tabId="2">
           <Row>
-            <Col sm="6">
+            <Col sm="12">
               <Card body>
                 <CardTitle>Auto Search, Search Git hub Users</CardTitle>
-                <AutoComplete prospectId={prospectId}></AutoComplete>
-                {/* <AsyncAutoComplete prospectId={prospectId}></AsyncAutoComplete> */}
+                <AutoComplete prospectId={props.id}></AutoComplete>
               </Card>
             </Col>
           </Row>
         </TabPane>
         <TabPane tabId="3">
           <Row>
-            <Col sm="6">
+            <Col sm="12">
               <Card body>
-                <EmailOptions prospectId={prospectId}></EmailOptions>
+                <EmailOptions prospectId={props.id}></EmailOptions>
               </Card>
             </Col>
           </Row>
