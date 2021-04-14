@@ -8,6 +8,8 @@ import ReactAgGrid from "./grid-examples/ReactAgGrid";
 import ReactDataComponentGrid from "./grid-examples/ReactDataComponentGrid";
 import ReactStrapSimpleTable from "./grid-examples/ReactStrapSimpleTable";
 import LazyloadComponent from "./LazyloadComponent";
+import TabsModelComponent from "./models/TabsModelComponent";
+import StripeCheckoutComponent from "./payment/StripeCheckoutComponent";
 import QrCodeContainer from "./qr-code/QrCodeContainer";
 import RouteGuard from "./routing-test/RouteGuard";
 import RouterComponentA from "./routing-test/RouterComponentA";
@@ -15,6 +17,8 @@ import RouterComponentB from "./routing-test/RouterComponentB";
 import Basic from "./SampleForm";
 import StepperComponent from "./StepperComponent";
 import TestErrorBoundaryComponent from "./TestErrorBoundaryComponent";
+import StripePaymentSuccess from "./payment/StripePaymentSuccess";
+import StripePaymentCancel from "./payment/StripePaymentCancel";
 
 const RoutingPath = () => {
   return (
@@ -45,6 +49,10 @@ const RoutingPath = () => {
       />
       <Route path="/errorboundarytest" component={TestErrorBoundaryComponent} />
       <Route path="/qr" component={QrCodeContainer} />
+      <Route path="/model" component={TabsModelComponent} />
+      <Route path="/stripe" component={StripeCheckoutComponent} />
+      <Route path="/stripepaymentsuccess" component={StripePaymentSuccess} />
+      <Route path="/stripepaymentcancel" component={StripePaymentCancel} />
     </Switch>
   );
 };

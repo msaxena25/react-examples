@@ -39,6 +39,10 @@ const SideNavigation = () => {
           <Link to="/">Stepper Component</Link>
         </MenuItem>
         <MenuItem icon={<FaGem />}>
+          {" "}
+          <Link to="/stripe">Stripe Payment</Link>
+        </MenuItem>
+        <MenuItem icon={<FaGem />}>
           <Link to="/email">Email</Link>
         </MenuItem>
         <SubMenu title="Forms" icon={<FaHeart />}>
@@ -88,6 +92,10 @@ const SideNavigation = () => {
           <MenuItem icon={<FaGem />}>
             {" "}
             <Link to="/qr">QR Code Examples</Link>
+          </MenuItem>
+          <MenuItem icon={<FaGem />}>
+            {" "}
+            <Link to="/model">Model Example</Link>
           </MenuItem>
         </SubMenu>
       </Menu>
