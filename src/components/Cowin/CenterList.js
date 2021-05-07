@@ -6,7 +6,7 @@ import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import './CenterList.css';
 
-const baseURL = `https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?`;
+const baseURL = `https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?`;
 
 //
 const CenterList = () => {
@@ -15,7 +15,7 @@ const CenterList = () => {
 
   const [rowData, setRowData] = useState(null);
   const [dateColumns, setDateColumns] = useState([]);
-  const [pinCode, setPinCode] = useState('122001');
+  const [pinCode, setPinCode] = useState('188');
 
   let dates = [];
   let updatedData = [];
@@ -23,12 +23,13 @@ const CenterList = () => {
     dates = [];
     updatedData = [];
     data.forEach((item) => {
-      if (item.sessions[0].min_age_limit === 18) {
+      item.sessions = item.sessions.filter((el) => el.min_age_limit === 18);
+      if (item.sessions.length) {
         item.sessions.forEach((element) => {
           if (!dates.includes(element.date)) {
             dates.push(element.date);
           }
-          item[element.date] = element.available_capacity;
+          item[element.date] = `${element.available_capacity}`; // (${element.min_age_limit})
         });
         item.age = item.sessions[0].min_age_limit;
         item.vaccine = item.sessions[0].vaccine;
@@ -49,7 +50,8 @@ const CenterList = () => {
     const d = new Date();
     const date = `0${d.getDate()}-0${d.getMonth() + 1}-${d.getFullYear()}`;
 
-    const SEARCH_URI = `${baseURL}pincode=${pinCode}&date=${date}`;
+    // pincode=${pinCode}
+    const SEARCH_URI = `${baseURL}district_id=${pinCode}&date=${date}`;
     fetch(SEARCH_URI)
       .then((resp) => resp.json())
       .then((data) => updateData(data.centers, false));
@@ -62,7 +64,7 @@ const CenterList = () => {
   }
 
   const hitAPI = (pin, date) => {
-    const SEARCH_URI = `${baseURL}pincode=${pin}&date=${date}`;
+    const SEARCH_URI = `${baseURL}district_id=${pinCode}&date=${date}`;
     fetch(SEARCH_URI)
       .then((resp) => resp.json())
       .then((data) => updateData(data.centers, true));
@@ -101,19 +103,16 @@ const CenterList = () => {
     'rag-red': 'data.age >= 25',
   };
   const cellClassRules = {
-    'col-red': 'data.fee > 20',
-    'rag-amber': 'x >= 20 && x < 25',
+    'col-green': 'data.vaccine === "COVAXIN"',
     'rag-red': 'x >= 25',
   };
 
   return (
     <>
-     <p>
-     GZB - 201012, Gurgaon -122001, Noida - 201301
-     </p>
+      <p>GZB - 651, Gurgaon Id -188, Noida - 650, Kheri - 668, Kanpur - 664</p>
       <Form inline>
         <FormGroup>
-          <Label for='pinCode'>Pin Code</Label>
+          <Label for='pinCode'>Dist. Code</Label>
           <Input
             type='text'
             name='pinCode'
@@ -143,8 +142,10 @@ const CenterList = () => {
           pagination={true}
           paginationPageSize={50}
         >
-          <AgGridColumn field='district_name' rowDrag={true} />
-          <AgGridColumn field='age' width={90} />
+          {/* <AgGridColumn field='district_name' /> */}
+          <AgGridColumn field='name' />
+          <AgGridColumn field='address' />
+          {/* <AgGridColumn field='age' width={90} /> */}
           {dateColumns.map((date, index) => {
             return (
               <AgGridColumn
@@ -156,10 +157,10 @@ const CenterList = () => {
               />
             );
           })}
-          <AgGridColumn field='fee_type' width={120} />
-          <AgGridColumn field='fee' cellClassRules={cellClassRules} width={80} />
-          <AgGridColumn field='name' />
-          <AgGridColumn field='vaccine' />
+          {/* <AgGridColumn field='fee_type' width={120} /> */}
+          <AgGridColumn field='fee' width={80} />
+
+          <AgGridColumn field='vaccine' cellClassRules={cellClassRules} />
         </AgGridReact>
       </div>
     </>

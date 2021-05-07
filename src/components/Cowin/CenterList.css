@@ -1,13 +1,17 @@
 .rag-green {
-    background-color: #cbdbf5 !important;
+  background-color: #cbdbf5 !important;
 }
 
 .col-red {
-    background-color: #f81037 !important;
+  background-color: #f81037 !important;
 }
 
 .rag-green-outer {
-    color: #f81037 !important;
-    font-weight: 700;
-    font-size: 24   px;
+  color: #f81037 !important;
+  font-weight: 700;
+  font-size: 24 px;
+}
+
+.col-green {
+  background-color: #1090f8 !important;
 }
