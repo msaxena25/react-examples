@@ -19,9 +19,9 @@ import StepperComponent from "./StepperComponent";
 import TestErrorBoundaryComponent from "./TestErrorBoundaryComponent";
 import StripePaymentSuccess from "./payment/StripePaymentSuccess";
 import StripePaymentCancel from "./payment/StripePaymentCancel";
-import User from './redux-examples/User';
-import OtherUser from './redux-examples/OtherUser';
 import CenterList from './Cowin/CenterList';
+import OtherUser from './redux-examples/UserList/OtherUser';
+import User from './redux-examples/UserList/User';
 
 const RoutingPath = () => {
   return (
@@ -57,6 +57,7 @@ const RoutingPath = () => {
       <Route path="/stripepaymentsuccess" component={StripePaymentSuccess} />
       <Route path="/stripepaymentcancel" component={StripePaymentCancel} />
       <Route path="/userslist" component={User} />
+      <Route path="/otheruserslist" component={OtherUser} />
       <Route path="/centreslist" component={CenterList} />
     </Switch>
   );
