@@ -15,16 +15,15 @@ const OtherUser = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log('Data', state.user);
   return {
     user: state.user.users,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    getUsersSuccess: () => dispatch(getUsersSuccess()),
-  };
+  // return {
+  //   getUsersSuccess: () => dispatch(getUsersSuccess()),
+  // };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(OtherUser);
