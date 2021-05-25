@@ -27,24 +27,25 @@ const SideNavigation = () => {
           <AiOutlineMenu />
         </div>
       </SidebarHeader>
-      
+
       <Menu iconShape='square'>
-      <MenuItem icon={<FaGem />}>
+        <MenuItem icon={<FaGem />}>
           {' '}
           <Link to='/centreslist'>Vaccination Centre</Link>
         </MenuItem>
-        <MenuItem icon={<FaGem />}>
-          {' '}
-          <Link to='/'>Stepper Component</Link>
-        </MenuItem>
+
         <MenuItem icon={<FaGem />}>
           {' '}
           <Link to='/stripe'>Stripe Payment</Link>
         </MenuItem>
-        <MenuItem icon={<FaGem />}>
-          <Link to='/email'>Email</Link>
-        </MenuItem>
+      
         <SubMenu title='Redux' icon={<FaHeart />}>
+          <MenuItem>
+            <Link to='/login'>Login</Link>
+          </MenuItem>
+          <MenuItem>
+            <Link to='/signup'>SignUp</Link>
+          </MenuItem>
           <MenuItem>
             <Link to='/userslist'>Users List</Link>
           </MenuItem>
@@ -62,6 +63,9 @@ const SideNavigation = () => {
           <MenuItem>
             <Link to='/basic'>Simple Form</Link>
           </MenuItem>
+          <MenuItem icon={<FaGem />}>
+          <Link to='/email'>Email Form</Link>
+        </MenuItem>
         </SubMenu>
         <SubMenu title='Table & Grids' icon={<FaHeart />}>
           <MenuItem>
@@ -88,6 +92,10 @@ const SideNavigation = () => {
           </MenuItem>
         </SubMenu>
         <SubMenu title='Other' icon={<FaHeart />}>
+          <MenuItem icon={<FaGem />}>
+            {' '}
+            <Link to='/'>Stepper Component</Link>
+          </MenuItem>
           <MenuItem icon={<FaGem />}>
             {' '}
             <Link to='/errorboundarytest'>Error Boundary Test</Link>

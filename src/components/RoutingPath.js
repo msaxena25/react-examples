@@ -22,6 +22,8 @@ import StripePaymentCancel from "./payment/StripePaymentCancel";
 import CenterList from './Cowin/CenterList';
 import OtherUser from './redux-examples/UserList/OtherUser';
 import User from './redux-examples/UserList/User';
+import LoginContainer from './redux-examples/redux/Login/LoginContainer';
+import SignUpContainer from './redux-examples/redux/Login/SignUpContainer';
 
 const RoutingPath = () => {
   return (
@@ -59,6 +61,8 @@ const RoutingPath = () => {
       <Route path="/userslist" component={User} />
       <Route path="/otheruserslist" component={OtherUser} />
       <Route path="/centreslist" component={CenterList} />
+      <Route path="/login" component={LoginContainer} />
+      <Route path="/signup" component={SignUpContainer} />
     </Switch>
   );
 };
