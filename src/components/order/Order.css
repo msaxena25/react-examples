@@ -1,0 +1,50 @@
+.order-container {
+  width: 80%;
+  margin: auto;
+  margin-top: 2%;
+  box-shadow: 3px 5px 10px grey;
+  padding: 20px;
+  font-size: 17px;
+}
+
+.txt-bold {
+  font-weight: bold;
+}
+
+.color-td {
+  width: 1px;
+}
+
+.del-time-field {
+  width: unset;
+    padding-right: 1.8rem;
+}
+
+.order-table {
+  border-top: 6px solid green;
+}
+
+.tbl-row {
+  margin-top: 20px;
+}
+
+.tbl-head {
+  background: #80808012;
+}
+
+.action-btn-div {
+  margin-top: 3rem;
+  text-align: right;
+}
+
+.action-btn-div .close-btn {
+  margin-right: 10px;
+  background-color: #e7e6e6 !important;
+  color: black;
+}
+
+.action-btn-div .submit-btn {
+  background-color: #107F62 !important;
+  width: 50%;
+  font-size: 20px;
+}

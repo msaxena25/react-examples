@@ -92,6 +92,10 @@ const SideNavigation = () => {
           </MenuItem>
         </SubMenu>
         <SubMenu title='Other' icon={<FaHeart />}>
+        <MenuItem icon={<FaGem />}>
+            {' '}
+            <Link to='/order'>Order Page</Link>
+          </MenuItem>
           <MenuItem icon={<FaGem />}>
             {' '}
             <Link to='/'>Stepper Component</Link>
