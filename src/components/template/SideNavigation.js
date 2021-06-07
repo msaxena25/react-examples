@@ -29,6 +29,10 @@ const SideNavigation = () => {
       </SidebarHeader>
 
       <Menu iconShape='square'>
+      <MenuItem icon={<FaGem />}>
+          {' '}
+          <Link to='/compA'>Use Context </Link>
+        </MenuItem>
         <MenuItem icon={<FaGem />}>
           {' '}
           <Link to='/centreslist'>Vaccination Centre</Link>

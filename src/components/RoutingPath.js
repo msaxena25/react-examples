@@ -26,6 +26,8 @@ import LoginContainer from './redux-examples/redux/Login/LoginContainer';
 import SignUpContainer from './redux-examples/redux/Login/SignUpContainer';
 import Order from './order/Order';
 import OrderSuccess from './order/OrderSuccess';
+import CompA from './UseContext-example/CompA';
+import CompB from './UseContext-example/CompB';
 
 const RoutingPath = () => {
   return (
@@ -60,6 +62,8 @@ const RoutingPath = () => {
 
       <Route path='/order' component={Order} />
       <Route path='/ordersuccess' component={OrderSuccess} />
+      <Route path='/compA' component={CompA} />
+      <Route path='/compB' component={CompB} />
     </Switch>
   );
 };
