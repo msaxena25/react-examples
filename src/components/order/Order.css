@@ -17,7 +17,7 @@
 
 .del-time-field {
   width: unset;
-    padding-right: 1.8rem;
+  padding-right: 1.8rem;
 }
 
 .order-table {
@@ -32,6 +32,10 @@
   background: #80808012;
 }
 
+.th-quant {
+  width: 18%;
+}
+
 .action-btn-div {
   margin-top: 3rem;
   text-align: right;
@@ -44,7 +48,24 @@
 }
 
 .action-btn-div .submit-btn {
-  background-color: #107F62 !important;
+  background-color: #107f62 !important;
   width: 50%;
   font-size: 20px;
+}
+.action-btn-div .submit-btn-disable {
+  background-color: gray !important;
+  width: 50%;
+  font-size: 20px;
+}
+
+
+.invalid {
+  border-color: red;
+}
+.invalid-text {
+  color: red;
+}
+
+.valid {
+  border-color: green;
 }

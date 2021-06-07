@@ -1,29 +1,39 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Button, Form, FormGroup, Label, Input, FormText, Row, Col, Table } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, FormText, Row, Col, Table, Alert } from 'reactstrap';
 import './Order.css';
 
 const apiPath = '/order-now/site-data/ordernow-site-details-by-orgId?orgId=13022';
 
+const quantityConfig = {
+  minValue: 500,
+  maxValue: 10000,
+};
+
 const Order = (props) => {
   // 12:00AM-4:00AM, 4:01AM-8:00AM, 8:01AM-Noon, 12:01PM-4:00PM, 4:01PM-8:00PM, 8:01PM-11:49PM
-  const deliveryTimeOptions = ['12:00AM-4:00AM', '4:01AM-8:00AM', '8:01AM-Noon', '12:01PM-4:00PM', '4:01PM-8:00PM', '8:01PM-11:49PM'];
+  const deliveryTimeOptions = ['12:00AM-4:00AM', '4:01AM-8:00AM', '8:01AM-11:59PM', '12:01PM-4:00PM', '4:01PM-8:00PM', '8:01PM-11:49PM'];
   const rowData = [
-    { product: 'REG', quantity: 500 },
-    { product: 'SUP', quantity: 500 },
-    { product: 'CDSL', quantity: 500 },
-    { product: 'PREMIUM', quantity: 1200 },
-    { product: 'MID', quantity: 900 },
+    { product: 'REG', quantity: '', valid: true },
+    { product: 'SUP', quantity: '', valid: true },
+    { product: 'CDSL', quantity: '' },
+    { product: 'PREMIUM', quantity: '' },
+    { product: 'MID', quantity: '' },
   ];
 
   const [productData, setProductData] = useState(rowData);
+  const [quantityError, setQuantityError] = useState({});
+  const [quantityErrorMessage, setQuantityErrorMessage] = useState('');
+  const [validComment, setValidComment] = useState(false);
+  const [submitDisabled, setSubmitDisabled] = useState(true);
+  const [totalSumError, setTotalSumError] = useState(false);
 
   const colors = {
-    'REG': '#262626',
-    'SUP': '#367BB5',
-    'CDSL': '#E02020',
-    'PREMIUM': '#F7B500',
-    'MID': '#107F62',
+    REG: '#262626',
+    SUP: '#367BB5',
+    CDSL: '#E02020',
+    PREMIUM: '#F7B500',
+    MID: '#107F62',
   };
 
   useEffect(() => {
@@ -33,14 +43,58 @@ const Order = (props) => {
   }, []);
 
   const onSubmit = () => {
-    props.history.push('/ordersuccess');
+    const quantityArr = productData.map((item) => item.quantity);
+    const quantitySum = quantityArr.reduce((accumulator, currentValue) => accumulator + currentValue);
+    if (quantitySum > quantityConfig.maxValue) {
+      setTotalSumError(true);
+    } else {
+      setTotalSumError(false);
+      props.history.push('/ordersuccess');
+    }
   };
   const onQuantityChange = (e, item) => {
+    setTotalSumError(false);
+    let value = e.target.value;
+    if (value !== '') {
+      value = Number(e.target.value);
+      if (Number.isNaN(value)) {
+        return;
+      }
+    }
+    let invalid = false;
+
+    if (value !== '') {
+      if (value < quantityConfig.minValue) {
+        invalid = true;
+        setQuantityErrorMessage(`Min ${quantityConfig.minValue} is required.`);
+      } else if (value > quantityConfig.maxValue) {
+        invalid = true;
+        setQuantityErrorMessage(`Max ${quantityConfig.maxValue} is allowed.`);
+      }
+    }
+    if (invalid) {
+      setQuantityError({ ...quantityError, [item.product]: true });
+    } else {
+      setQuantityError({ ...quantityError, [item.product]: false });
+    }
+
     const data = [...productData];
     const selected = data.find((product) => product.product === item.product);
-    selected.quantity = Number(e.target.value);
+    selected.quantity = value;
     console.log('item and selected item :', item, selected);
     setProductData(data);
+    console.log(quantityError);
+  };
+
+  const submitBtnDisabled = () => {
+    console.log(quantityError);
+    const minOneProduct = productData.find(item => item.quantity);
+    const validity = Object.values(quantityError);
+    if (!minOneProduct || validity.length < 1 || validity.includes(true)) {
+      return true;
+    } else {
+      return false;
+    }
   };
 
   return (
@@ -101,12 +155,15 @@ const Order = (props) => {
 
         <Row className='tbl-row'>
           <Col>
+            {totalSumError && (
+               <Alert color='danger'>The total quantity of gallons should be 10,000 or less.</Alert>
+            )}
             <Table className='order-table'>
               <thead>
                 <tr className='tbl-head'>
                   <th style={{ width: '1px' }}></th>
                   <th>Product / Description</th>
-                  <th style={{ width: '160px' }}>Quantity</th>
+                  <th className='th-quant'>Quantity</th>
                 </tr>
               </thead>
               <tbody>
@@ -119,11 +176,14 @@ const Order = (props) => {
                       <td>{item.product}</td>
                       <td>
                         <Input
+                          className={item.quantity != '' ? (quantityError[item.product] ? 'invalid' : 'valid') : ''}
                           type='text'
                           name={item.product}
                           value={item.quantity}
+                          placeholder='min 500 gallons'
                           onChange={($event) => onQuantityChange($event, item)}
                         ></Input>
+                        {/* {quantityError[item.product] ? <span className='invalid-text'>{quantityErrorMessage}</span> : ''} */}
                       </td>
                     </tr>
                   );
@@ -134,11 +194,15 @@ const Order = (props) => {
         </Row>
         <Row>
           <Col>
-            <Input type='textarea' rows='4' name='text' id='comment' placeholder='Comments' />
+            <Input type='textarea' rows='4' name='text' maxLength="120" id='comment' placeholder='Comments' />
           </Col>
           <Col sm={3}>
             <div className='action-btn-div'>
-              <Button onClick={onSubmit} className='btn submit-btn'>
+              <Button
+                disabled={submitBtnDisabled()}
+                onClick={onSubmit}
+                className={submitBtnDisabled() ? 'btn submit-btn-disable' : 'btn submit-btn'}
+              >
                 Submit
               </Button>
             </div>
