@@ -41,6 +41,7 @@ const RoutingPath = () => {
       <Route path='/basic' component={Basic} />
       <Route path='/lazyload' component={LazyloadComponent} />
       <Route path='/routerA/:id/:name' component={RouterComponentA} />
+      
       {/* This is Simple Route: <Route path="/routerB" component={RouterComponentB} /> */}
       {/* In Below route we have wrapped this with RouteGuard component and pass authenticate 
       we can get this authenticate by a function here */}
