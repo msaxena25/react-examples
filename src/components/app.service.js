@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Get all Users from API > https://jsonplaceholder.typicode.com/guide/
 class AppService {
-  async getUsers() {
+  static async getUsers() {
     return axios
       .get("https://jsonplaceholder.typicode.com/users")
       .then((response) => {

@@ -31,6 +31,10 @@ const SideNavigation = () => {
       <Menu iconShape='square'>
       <MenuItem icon={<FaGem />}>
           {' '}
+          <Link to='/practice'>Pracice  Component </Link>
+        </MenuItem>
+        <MenuItem icon={<FaGem />}>
+          {' '}
           <Link to='/compA'>Use Context </Link>
         </MenuItem>
         <MenuItem icon={<FaGem />}>
@@ -42,7 +46,7 @@ const SideNavigation = () => {
           {' '}
           <Link to='/stripe'>Stripe Payment</Link>
         </MenuItem>
-      
+
         <SubMenu title='Redux' icon={<FaHeart />}>
           <MenuItem>
             <Link to='/login'>Login</Link>
@@ -68,8 +72,8 @@ const SideNavigation = () => {
             <Link to='/basic'>Simple Form</Link>
           </MenuItem>
           <MenuItem icon={<FaGem />}>
-          <Link to='/email'>Email Form</Link>
-        </MenuItem>
+            <Link to='/email'>Email Form</Link>
+          </MenuItem>
         </SubMenu>
         <SubMenu title='Table & Grids' icon={<FaHeart />}>
           <MenuItem>
@@ -96,7 +100,7 @@ const SideNavigation = () => {
           </MenuItem>
         </SubMenu>
         <SubMenu title='Other' icon={<FaHeart />}>
-        <MenuItem icon={<FaGem />}>
+          <MenuItem icon={<FaGem />}>
             {' '}
             <Link to='/order'>Order Page</Link>
           </MenuItem>
