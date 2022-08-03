@@ -22,6 +22,7 @@ const LazyloadComponent = () => {
       <button onClick={onLoad}>Load Components</button>
       {load && (
         <Suspense fallback={<div>Loading...</div>}>
+        Component loaded in lazy way.
           <RouterComponentA></RouterComponentA>
           <RouterComponentB></RouterComponentB>
         </Suspense>

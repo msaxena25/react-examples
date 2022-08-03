@@ -48,6 +48,7 @@ const Login = (props) => {
                       <i className='fa fa-user'></i>
                     </span>
                     <input
+                    data-testid="username"
                       type='text'
                       name='userName'
                       className='form-control'
@@ -71,7 +72,7 @@ const Login = (props) => {
                   </div>
                   <div className='row'>
                     <div className='col-6'>
-                      <button type='button' className='btn btn-primary px-4' onClick={onLogin}>
+                      <button data-testid='loginBtn' type='button' className='btn btn-primary px-4' onClick={onLogin}>
                         Login
                       </button>
                     </div>

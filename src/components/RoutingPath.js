@@ -29,6 +29,7 @@ import OrderSuccess from './order/OrderSuccess';
 import CompA from './UseContext-example/CompA';
 import CompB from './UseContext-example/CompB';
 import PracticeOneComponent from './practice/PracticeOne';
+import UsersListWithSelector from './redux-examples/UserList/UserListWithUseSelector';
 
 
 const RoutingPath = () => {
@@ -59,7 +60,7 @@ const RoutingPath = () => {
             <Route path='/stripe' component={StripeCheckoutComponent} />
             <Route path='/stripepaymentsuccess' component={StripePaymentSuccess} />
             <Route path='/stripepaymentcancel' component={StripePaymentCancel} />
-            <Route path='/userslist' component={User} />
+            <Route path='/userslist' component={UsersListWithSelector} />
             <Route path='/otheruserslist' component={OtherUser} />
             <Route path='/centreslist' component={CenterList} />
             <Route path='/login' component={LoginContainer} />
