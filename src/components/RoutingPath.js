@@ -30,12 +30,14 @@ import CompA from './UseContext-example/CompA';
 import CompB from './UseContext-example/CompB';
 import PracticeOneComponent from './practice/PracticeOne';
 import UsersListWithSelector from './redux-examples/UserList/UserListWithUseSelector';
+import Debounce from './debounce/Debounce';
+import Throttle from './throttle/Throttle';
 
 
 const RoutingPath = () => {
   return (
         <Switch>
-            <Route exact path='/' component={PracticeOneComponent} />
+            <Route exact path='/' component={Throttle} />
             <Route path='/typeahead' component={AutoComplete}></Route>
             <Route path='/practice' render={() => <PracticeOneComponent/>}></Route>
             <Route path='/email' component={EmailOptions}></Route>
