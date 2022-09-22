@@ -32,14 +32,16 @@ import PracticeOneComponent from './practice/PracticeOne';
 import UsersListWithSelector from './redux-examples/UserList/UserListWithUseSelector';
 import Debounce from './debounce/Debounce';
 import Throttle from './throttle/Throttle';
+import UseReducerComponent from './useReducer/UseReducerComponent';
+import UseImperativeHandleComponent from './useImperativeHandle/UseImperativeHandle';
 
 
 const RoutingPath = () => {
-  return (
+    return (
         <Switch>
-            <Route exact path='/' component={Throttle} />
+            <Route exact path='/' component={UseImperativeHandleComponent} />
             <Route path='/typeahead' component={AutoComplete}></Route>
-            <Route path='/practice' render={() => <PracticeOneComponent/>}></Route>
+            <Route path='/practice' render={() => <PracticeOneComponent />}></Route>
             <Route path='/email' component={EmailOptions}></Route>
             <Route path='/asynctypeahead' component={AsyncAutoComplete}></Route>
             <Route path='/formikform' component={FormikFormComponent} />
@@ -72,7 +74,7 @@ const RoutingPath = () => {
             <Route path='/compA' component={CompA} />
             <Route path='/compB' component={CompB} />
         </Switch>
-        );
+    );
 };
 
-        export default RoutingPath;
+export default RoutingPath;
