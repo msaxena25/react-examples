@@ -34,12 +34,18 @@ import Debounce from './debounce/Debounce';
 import Throttle from './throttle/Throttle';
 import UseReducerComponent from './useReducer/UseReducerComponent';
 import UseImperativeHandleComponent from './useImperativeHandle/UseImperativeHandle';
+import SetStateMultipleTimes from './practice/SetStateMultipleTimes';
+import SetStateInClassComponent from './practice/SetStateInClassComponent';
+import CheckReRendering from './practice/CheckReRendering';
+
+// NOTE: You can put component in first route which U have to run...
 
 
 const RoutingPath = () => {
     return (
         <Switch>
-            <Route exact path='/' component={UseImperativeHandleComponent} />
+            <Route exact path='/' component={CheckReRendering} />
+            {/* <Route exact path='/' component={SetStateMultipleTimes} /> */}
             <Route path='/typeahead' component={AutoComplete}></Route>
             <Route path='/practice' render={() => <PracticeOneComponent />}></Route>
             <Route path='/email' component={EmailOptions}></Route>
